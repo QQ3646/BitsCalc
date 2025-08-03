@@ -1,7 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 from typing import Optional
+
+import bits_list
 import notation_selector
+import sign_and_size
 import unformatted_value
 from notation_selector import Notation, get_current_notation
 
@@ -38,8 +41,11 @@ def change_formatted_value():
         clear_both_values()
         return
 
+    from utils import convert_from_bin_to_dec
     new_value = int(_formatted_value.get(), get_current_notation().value)
-    unformatted_value.set_unformatted_value_raw(new_value)
+    unformatted_value.set_unformatted_value_raw(convert_from_bin_to_dec(new_value, sign_and_size.is_unsigned, sign_and_size.get_current_size()))
+
+    bits_list.update()
 
 def mark_as_programmed_edited() -> None:
     _formatted_value.is_programmed_changed_value = True

@@ -1,4 +1,5 @@
 import formatted_value
+import sign_and_size
 import unformatted_value
 from tkinter import *
 from tkinter import ttk
@@ -63,9 +64,12 @@ def select_notation() -> None:
     change_formatted_value(unformatted_value.get_unformatted_value_as_int(), get_current_notation())
 
 def change_formatted_value(decimal_number: int, notation: Notation) -> None:
+    from utils import convert_from_dec_to_bin
+
+    b_number = convert_from_dec_to_bin(decimal_number, sign_and_size.get_current_size())
     formatted_value.set_formatted_value_raw(
         notation.get_prefix() +
-        notation.format_number(decimal_number)
+        notation.format_number(int(b_number, 2))
     )
 
 def change_notation_by_input(new_notation: Notation) -> None:
