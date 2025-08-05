@@ -16,8 +16,8 @@ def update_lower_and_upper_point():
     lowerPoint = 0           if is_unsigned else -(2 ** (size - 1))
     upperPoint = (2 ** size) if is_unsigned else   2 ** (size - 1)
 
-    from unformatted_value import change_unformatted_value
-    change_unformatted_value()
+    from unformatted_value import change_format
+    change_format()
 
     from bits_list import update_bits_count
     update_bits_count()

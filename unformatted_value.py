@@ -35,6 +35,12 @@ def change_unformatted_value():
     notation_selector.change_formatted_value(get_unformatted_value_as_int(), notation_selector.get_current_notation())
     bits_list.update()
 
+def change_format() -> None:
+    from utils import convert_from_bin_to_dec
+    mark_as_programmed_edited()
+    _unformatted_value.set(str(convert_from_bin_to_dec(bits_list.button_list.get_current_bin_number(), sign_and_size.is_unsigned, sign_and_size.get_current_size())))
+    notation_selector.change_formatted_value(get_unformatted_value_as_int(), notation_selector.get_current_notation())
+
 def get_unformatted_value() -> str:
     return _unformatted_value.get()
 
